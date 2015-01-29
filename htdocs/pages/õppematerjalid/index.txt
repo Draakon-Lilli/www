@@ -6,5 +6,5 @@ lae alla "ülesannete kogu":documents/ylesannete_kogu.pdf
 
 Lisaks Eesti Hariduse Infosüsteemis "EHIS":http://www.ehis.ee
 kajastuvatele retsensioonidele on õppematerjali kohta oma hinnangu andnud ka dots. Mare Leino Tallinna Ülikoolist ja õpetaja Tiina Ojasson-Võsa Laulasmaa koolist.
-"retsensioon":documents/retsensioon_Tiina_Ojasson-Vosa.pdf   T.Ojasson-Võsa, Laulasmaa kool
-"retsensioon":documents/retsensioon_Mare_Leino.pdf           dots. Mare Leino, Tallinna Ülikool
+"retsensioon":documents/retsensioon_Tiina_Ojasson-Vosa.pdf   Tiina Ojasson-Võsa, Laulasmaa kool
+"retsensioon":documents/retsensioon_Mare_Leino.pdf           dotsent Mare Leino, Tallinna Ülikool
