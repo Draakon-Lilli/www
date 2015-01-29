@@ -1,11 +1,15 @@
 <?php
 
 # Lets collect path elements.
-# TODO: path elements - array $data['path'] - should be 
+# TODO: path elements - array $data['path'] - should be
 # initialsed from address-line
 if (isset ($_GET['section'])) $data['path'][] = $_GET['section'];
 if (isset ($_GET['page'])) $data['path'][] = $_GET['page'];
 if (isset ($_GET['page2'])) $data['path'][] = $_GET['page2'];
+
+echo('<pre style="float:right; z-index:20; padding 20px; color: #aaa"; opacity:0.5;>');
+//print_r($_GET);
+echo('</pre>');
 
 
 define(THEME, '2colfix');
@@ -68,7 +72,7 @@ function &collect_dirs( $dir )
                $filename_a = explode('.', $file);
                $ext = array_pop($filename_a);
                $filename = implode('.', $filename_a);
-               
+
                $pages[$filename][$ext] = $dir . $filename;
                if( $ext == 'link' )
                {
@@ -104,7 +108,7 @@ function &collect_dirs( $dir )
       $pages = $dir_order;
    }
 
-   #print_r($pages); 
+   #print_r($pages);
 
    return $pages;
 }
@@ -136,24 +140,33 @@ else
    $data['page'] = end($pages);
 }
 
+// Avalehe hack
+if ($_GET == []) {
+   $data['page']['html'] = './pages/index';
+}
+
 $contents_file = $data['page']['html'] . '.html';
+echo('<pre style="float:right; z-index:20; padding 20px; color: #aaa"; opacity:0.5;>');
+// print_r($_GET);
+// print_r($data);
+echo('</pre>');
 if( is_file( $contents_file ) )
 {
-	$data['contents'] = file_get_contents( $contents_file );
+   $data['contents'] = file_get_contents( $contents_file );
 
-	//
-	// replace email addresses with links
-	//
-	$pattern = '([\w\.]+@[\w\.]+)';
-	$replacement = '<a href="mailto:${0}">${0}</a>';
-	$data['contents'] = preg_replace($pattern, $replacement, $data['contents']);
+   //
+   // replace email addresses with links
+   //
+   $pattern = '([\w\.]+@[\w\.]+)';
+   $replacement = '<a href="mailto:${0}">${0}</a>';
+   $data['contents'] = preg_replace($pattern, $replacement, $data['contents']);
 
-	//
-	// replace web addresses with links
-	//
-	$pattern = '(www\.[\w\.\/\-]+)';
-	$replacement = '<a href="http://${0}" target="_blank">${0}</a>';
-	$data['contents'] = preg_replace($pattern, $replacement, $data['contents']);
+   //
+   // replace web addresses with links
+   //
+   $pattern = '(www\.[\w\.\/\-]+)';
+   $replacement = '<a href="http://${0}" target="_blank">${0}</a>';
+   $data['contents'] = preg_replace($pattern, $replacement, $data['contents']);
 }
 else if( is_file( $data['page']['txt'] . '.txt' ) )
 {

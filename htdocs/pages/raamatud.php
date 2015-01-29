@@ -1,12 +1,21 @@
 <?php
 
-$data['path'][1] = $data['path'][1] == 'index' ? '/Külaskäik Draakon-Lilli majja' : $data['path'][1];
+if(!isset($data['path'][1]))
+{
+   $data['path'][1] = 'Külaskäik Draakon-Lilli majja';
+   $data['path'][2] = '0';
+}
+// echo('<pre style="float:right; z-index:20; padding 20px; color: #aaa"; opacity:0.5;>');
+// print_r($data);
+// echo('</pre>');
+
+// $data['path'][1] = $data['path'][1] == 'index' ? '/Külaskäik Draakon-Lilli majja' : $data['path'][1];
 
 
 // todo: read from filesystem
 $num_of_sheets = 48;
 
-$bookpath = $data['path'][0] . '/' . $data['path'][1];
+$bookpath = $data['path'][0] . '/' . 'Külaskäik Draakon-Lilli majja';
 $current_sheet = isset( $data['path'][2] ) ? $data['path'][2] : 0;
 $current_sheet = $current_sheet - $current_sheet % 2;
 $prev_sheet = $current_sheet > 0 ? $current_sheet - 2 : false;

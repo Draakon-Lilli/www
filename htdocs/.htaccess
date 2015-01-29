@@ -1,3 +1,12 @@
 Options +FollowSymLinks
 RewriteEngine On
-RewriteRule ^(.*)/$ http://www.draakon-lilli.ee/?section=$1
+
+RewriteRule ^www.draakon-lilli.ee$ www.draakon-lilli.ee/raamatud/ [NS,L,S]
+
+RewriteCond %{HTTP_HOST} =www.draakon-lilli.ee
+RewriteCond %{REQUEST_URI} !^/(theme|documents|pages)/.*$
+RewriteRule ^(.*)/$ /?section=$1 [NS,L]
+
+RewriteCond %{HTTP_HOST} =www.draakon-lilli.ee
+RewriteCond %{REQUEST_URI} !^/(theme|documents|pages)/.*$
+RewriteRule ^(.*)/(.*)/(.*)$ /?section=$1&page=$2&page2=$3 [NS,L]
